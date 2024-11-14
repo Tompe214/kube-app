@@ -14,6 +14,15 @@ spec:
       labels:
         app: vprodb
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "node-role.kubernetes.io/worker"
+                    operator: "In"
+                    values:
+                      - "true"
       containers:
         - name: vprodb
           image: tompe214/vprofiledb:v1
