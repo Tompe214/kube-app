@@ -40,6 +40,7 @@ spec:
       initContainers:
         - name: busybox
           image: busybox:latest
-          args: ["rm", "-rf", "/var/lib/mysql/lost+found"]kops validate cluster --name=kubevpro.thetoni.xyz --state=s3://vprofile-kops-state221
-        - name: vpro-db-data
-          mountPath: /var/lib/mysql
+          args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
+          volumeMounts:
+            - name: vpro-db-data
+              mountPath: /var/lib/mysql
