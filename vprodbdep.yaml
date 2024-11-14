@@ -1,4 +1,4 @@
-apiVersion: apps/latest
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vprodb
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: vprodb
-          image: tompe214/vprofiledb:latest
+          image: tompe214/vprofiledb:v1
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vpro-db-data
@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: vpro-db-data
           awsElasticBlockStore:
-            volumeID: vol-0ea358ac881c8bccd
+            volumeID: vol-01d567f1e62482789
             fsType: ext4
 
       initContainers:
